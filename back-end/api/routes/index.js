@@ -1,10 +1,32 @@
 var express = require('express'),
   router = express.Router(),
   productCtrl = require('../controllers/ProductController');
+  loziproductCtrl = require('../controllers/LoziController');
 
   const authentication = require('../controllers/authentication')(router);
   app = express();
 	memberCtrl = require('../controllers/MemberController');
+
+
+
+
+
+   //-------------------------------Lozi Routes-----------------------------------
+
+   router.get('/lozi/getProducts', loziproductCtrl.getProducts);
+   router.get('/lozi/getProduct/:loziproductsId', loziproductCtrl.getProduct);
+   router.post('/lozi/createProduct', loziproductCtrl.createProduct);
+   router.get(
+     '/lozi/getProductsBySeller/:seller',
+     loziproductCtrl.getProductsBySeller
+   );
+ 
+   router.get(
+     '/lozi/getProductsByComponent/:component',
+     loziproductCtrl.getProductsByComponent
+   );
+router.patch('/lozi/updateProduct/:loziproductsId', loziproductCtrl.updateProduct);
+router.delete('/lozi/deleteProduct/:loziproductsId', loziproductCtrl.deleteProduct);
 
 
 //-------------------------------Product Routes-----------------------------------
