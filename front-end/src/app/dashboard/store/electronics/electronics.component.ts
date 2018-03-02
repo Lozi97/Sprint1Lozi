@@ -5,11 +5,10 @@ import { ElectronicsService } from './electronics.service';
 @Component({
   selector: 'app-electronics',
   template: `<h1>
-  Electronics Products are here
+  Electronics Products 
  
  </h1>
  
- <input #search class="search" style="background:white" type="text"(keydown.enter)="onSearch(search.value)" placeholder="Search...">
  <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
  
  
@@ -30,11 +29,16 @@ export class ElectronicsComponent implements OnInit {
      
       name: {
         title: 'Name',
-        filter:false
+        filter:String
       },
       price: {
         title: 'Price',
-        filter:false
+        filter:String
+      },
+   
+      seller: {
+        title: 'Seller Name',
+        filter:String
       },
       createdAt: {
         title: 'CreatedAt',
@@ -42,14 +46,6 @@ export class ElectronicsComponent implements OnInit {
       },
       updatedAt: {
         title: 'UpdatedAt',
-        filter:false
-      },
-      component: {
-        title: 'Component Name',
-        filter:false
-      },
-      seller: {
-        title: 'Seller Name',
         filter:false
       }
 

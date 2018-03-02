@@ -12,11 +12,11 @@ export class MyitemsService {
   }
 
    getProducts(){
-     return this.httpClient.get(environment.apiUrl + 'lozi/getProducts');
+     return this.httpClient.get(environment.apiUrl + 'lozi/getProductsBySeller/'+window.sessionStorage.email);
    }
 
    updateProduct(id:object, name:string, price:number, component:string, seller:string) {
-    return this.httpClient.patch(environment.apiUrl + 'lozi/updateProduct/'+id,{'name':name, 'price':price, 'component':component,'seller':seller});
+    return this.httpClient.patch(environment.apiUrl + 'lozi/updateProduct/'+id,{'name':name, 'price':price, 'component':component,'seller':window.sessionStorage.email});
   }
 
   deleteProduct(id:object){

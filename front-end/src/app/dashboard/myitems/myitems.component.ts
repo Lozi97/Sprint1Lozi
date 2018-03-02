@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Ng2SmartTableModule,LocalDataSource } from 'ng2-smart-table';
 import { MyitemsService } from './myitems.service';
+import { LoginComponent } from '../auth/login/login.component';
 @Component({
   selector: 'app-myitems',
-  template: `<input #search class="search" style="background:white" type="text"(keydown.enter)="onSearch(search.value)" placeholder="Search...">
+  template: `
   <ng2-smart-table [settings]="settings" [source]="data" (createConfirm)="onCreateCall($event)" (editConfirm)="onEditCall($event)" (deleteConfirm)="onDeleteCall($event)"></ng2-smart-table>
   
   `,
@@ -16,6 +17,9 @@ export class MyitemsComponent implements OnInit {
 
 
   settings = {
+
+    
+  
 
     add: {
       confirmCreate: true
@@ -31,21 +35,18 @@ export class MyitemsComponent implements OnInit {
      
       name: {
         title: 'Name',
-        filter:false
+        filter:String
       },
       price: {
         title: 'Price',
-        filter:false
+        filter:Number
       },
       
       component: {
         title: 'Component Name',
-        filter:false
+        filter:String
       },
-      seller: {
-        title: 'Seller Name',
-        filter:false
-      },
+     
       createdAt: {
         title: 'CreatedAt',
         filter:false
@@ -66,7 +67,7 @@ export class MyitemsComponent implements OnInit {
   
   onCreateCall(event){
     event.confirm.resolve(event.newData);
-    this.myitemsService.createProduct(event.newData.name, event.newData.price,event.newData.component,event.newData.seller).subscribe();
+    this.myitemsService.createProduct(event.newData.name, event.newData.price,event.newData.component,window.sessionStorage.email).subscribe();
 }
 
 onEditCall(event){

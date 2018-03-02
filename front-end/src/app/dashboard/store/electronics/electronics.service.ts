@@ -11,9 +11,9 @@ export class ElectronicsService {
     return this.httpClient.post(environment.apiUrl + 'lozi/createProduct', {'name':name, 'price':price , 'component':component,'seller':seller});
   }
 
-   getProducts(){
-     return this.httpClient.get(environment.apiUrl + 'lozi/getProducts');
-   }
+  getProducts(){
+    return this.httpClient.get(environment.apiUrl + 'lozi/getProductsByComponent/c5');
+  }
 
    updateProduct(id:object, name:string, price:number) {
     return this.httpClient.patch(environment.apiUrl + 'lozi/updateProduct/'+id,{'name':name, 'price':price});
