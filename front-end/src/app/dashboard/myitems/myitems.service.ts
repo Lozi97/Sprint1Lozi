@@ -15,8 +15,8 @@ export class MyitemsService {
      return this.httpClient.get(environment.apiUrl + 'lozi/getProducts');
    }
 
-   updateProduct(id:object, name:string, price:number) {
-    return this.httpClient.patch(environment.apiUrl + 'lozi/updateProduct/'+id,{'name':name, 'price':price});
+   updateProduct(id:object, name:string, price:number, component:string, seller:string) {
+    return this.httpClient.patch(environment.apiUrl + 'lozi/updateProduct/'+id,{'name':name, 'price':price, 'component':component,'seller':seller});
   }
 
   deleteProduct(id:object){
